@@ -117,11 +117,11 @@ namespace Trissiklikk.EditorTools
         private GUIStyle GetStyleButtonFocusPath()
         {
             GUIStyle styleBtnLoadPath = new GUIStyle(GUI.skin.button);
-            styleBtnLoadPath.fontSize = 10;
+            styleBtnLoadPath.fontSize = 12;
             styleBtnLoadPath.normal.textColor = Color.white;
             styleBtnLoadPath.hover.textColor = Color.white;
+            styleBtnLoadPath.stretchHeight = false;
             styleBtnLoadPath.stretchWidth = false;
-            styleBtnLoadPath.stretchHeight = true;
             return styleBtnLoadPath;
         }
 
