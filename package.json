@@ -1,0 +1,17 @@
+{
+  "name": "com.trissiklikk.load-scene-gui-unity-package",
+  "version": "1.0.0",
+  "displayName": "Load Scene GUI",
+  "description": "This package is my custom editor in Unity engine that help you changing scene easier.",
+  "unity": "2022.3",
+  "keywords": [
+    "library",
+    "gui",
+    "editor"
+  ],
+  "author": {
+    "name": "Anak Ladachat",
+    "email": "koontime@gmail.com",
+    "url": "https://koontime.wixsite.com/anak-ladachat"
+  }
+}
