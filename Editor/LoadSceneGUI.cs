@@ -1,13 +1,12 @@
 ﻿#if UNITY_EDITOR
-using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
-using Unity.Plastic.Newtonsoft.Json.Linq;
 using System.IO;
-using static Codice.CM.WorkspaceServer.WorkspaceTreeDataStore;
-using Unity.Plastic.Newtonsoft.Json;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
 
 namespace Trissiklikk.EditorTools
 {
