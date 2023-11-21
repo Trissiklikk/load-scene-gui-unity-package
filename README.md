@@ -27,3 +27,13 @@ The Load scene window it will show all register scene in Build setting. (Red tex
   - **Focus path Button (">")** It will focus the asset scene.unity in your **Unity project window**.
     
 ![image](https://github.com/Trissiklikk/load-scene-gui-unity-package/assets/70420610/a0851a49-f3c1-42bf-af50-a7fdd4ec70ee)
+
+
+
+
+# Update Patch Note 1.1.0
+**Add**
+- Favorite button to make your scene up to the top of list
+
+![image](https://github.com/Trissiklikk/load-scene-gui-unity-package/assets/70420610/f696c7dd-cb39-4145-bd36-fd8f06024632)
+
