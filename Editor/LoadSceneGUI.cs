@@ -6,16 +6,18 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
 namespace Trissiklikk.EditorTools
 {
-    public sealed class LoadSceneGUI : EditorWindow
+    public sealed class LoadSceneGUI : EditorWindow, IHasCustomMenu
     {
         /// <summary>
         /// Static mathod to show the window.
         /// </summary>
         [MenuItem("Window/Trissiklikk Editor Tools/Load Scene GUI")]
+        [Shortcut("LoadSceneGUI", KeyCode.F11)]
         public static void ShowWindow()
         {
             GetWindow(typeof(LoadSceneGUI));
@@ -52,7 +54,7 @@ namespace Trissiklikk.EditorTools
 
         private void OnDestroy()
         {
-            SaveFavotite();
+            SaveFavorite();
         }
 
         private void OnGUI()
@@ -145,14 +147,28 @@ namespace Trissiklikk.EditorTools
         }
 
         /// <summary>
-        /// Called when the window is opened.
+        /// Called when the window is closed.
         /// </summary>
-        private void LoadFavorite()
+        public void SaveFavorite()
         {
             string path = Path.Combine(Application.persistentDataPath, SAVE_FAVORITE_PATH);
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            var files = Directory.GetFiles(path);
+            string filePath = Path.Combine(path, FILE_NAME);
+            string json = FavoriteToJson().ToString();
+            File.WriteAllText(filePath, json);
+            LoadFavorite();
+        }
+
+        /// <summary>
+        /// Called when the window is opened.
+        /// </summary>
+        public void LoadFavorite()
+        {
+            string path = Path.Combine(Application.persistentDataPath, SAVE_FAVORITE_PATH);
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            string[] files = Directory.GetFiles(path);
             foreach (var file in files)
             {
                 string content = File.ReadAllText(file);
@@ -162,24 +178,12 @@ namespace Trissiklikk.EditorTools
         }
 
         /// <summary>
-        /// Called when the window is closed.
-        /// </summary>
-        private void SaveFavotite()
-        {
-            string path = Path.Combine(Application.persistentDataPath, SAVE_FAVORITE_PATH);
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-            string filePath = Path.Combine(path, FILE_NAME);
-            string json = FavoriteToJson().ToString();
-            File.WriteAllText(filePath, json);
-        }
-
-        /// <summary>
         /// This method is called when the window is closed.
         /// </summary>
         /// <param name="json"></param>
         private void CreateFavoriteFormJson(JToken json)
         {
+            s_scenePathList = new List<string>();
             if (json is JArray)
             {
                 JArray jArray = (JArray)json;
@@ -264,6 +268,18 @@ namespace Trissiklikk.EditorTools
                     return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// This is function for add menu to kebab button at top-right this gui editor.
+        /// Should inherit IHasCustomMenu to used this method.
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void AddItemsToMenu(GenericMenu menu)
+        {
+            //menu.AddItem(new GUIContent("Refresh"), false, LoadFavorite);
+            menu.AddItem(new GUIContent("Save Favorite"), false, SaveFavorite);
         }
 
         /// <summary>
