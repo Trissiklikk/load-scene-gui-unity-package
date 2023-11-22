@@ -216,8 +216,8 @@ namespace Trissiklikk.EditorTools
         {
             GUIStyle styleBtnFavorite = new GUIStyle(GUI.skin.button);
             styleBtnFavorite.fontSize = 12;
-            styleBtnFavorite.normal.textColor = CheckIsFavorite(sceneName) ? Color.red : Color.white;
-            styleBtnFavorite.hover.textColor = CheckIsFavorite(sceneName) ? Color.red : Color.white;
+            styleBtnFavorite.normal.textColor = CheckIsFavorite(sceneName) ? Color.red : new Color(1, 1, 1, 0.25f);
+            styleBtnFavorite.hover.textColor = CheckIsFavorite(sceneName) ? Color.red : new Color(1, 1, 1, 0.5f);
             styleBtnFavorite.stretchHeight = false;
             styleBtnFavorite.stretchWidth = false;
             return styleBtnFavorite;
