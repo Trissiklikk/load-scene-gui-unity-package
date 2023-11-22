@@ -43,11 +43,6 @@ namespace Trissiklikk.EditorTools
                 "Additive",
                 "Additive Without Loading",
             };
-
-            for (int i = 0; i < s_scenePathList.Count; i++)
-            {
-                Debug.Log(s_scenePathList[i]);
-            }
         }
 
         private void OnEnable()
