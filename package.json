@@ -13,5 +13,8 @@
     "name": "Anak Ladachat",
     "email": "koontime@gmail.com",
     "url": "https://koontime.wixsite.com/anak-ladachat"
+  },
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
   }
 }

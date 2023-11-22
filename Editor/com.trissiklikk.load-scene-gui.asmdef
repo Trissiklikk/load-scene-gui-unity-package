@@ -1,7 +1,9 @@
 {
-    "name": "NewAssembly",
+    "name": "com.trissiklikk.load-scene-gui",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:4b84427fd7ace4b4cb623ef8a46124ed"
+    ],
     "includePlatforms": [
         "Editor"
     ],
