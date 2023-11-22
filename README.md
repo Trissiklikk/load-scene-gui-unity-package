@@ -37,3 +37,16 @@ The Load scene window it will show all register scene in Build setting. (Red tex
 
 ![image](https://github.com/Trissiklikk/load-scene-gui-unity-package/assets/70420610/f696c7dd-cb39-4145-bd36-fd8f06024632)
 
+# Update Patch Note 1.2.0
+**Add**
+- Open editor short cut (F11)
+- Save button in context menu at load scene editor
+- Add assembly definition reference (Unity PlasticSCM)
+
+![image](https://github.com/Trissiklikk/load-scene-gui-unity-package/assets/70420610/f5a1942f-6305-4ec1-8d97-e1e7b518aed8)
+
+**Fixed**
+- Change assembly name.
+
+
+
