@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
 namespace Trissiklikk.EditorTools
@@ -16,8 +15,7 @@ namespace Trissiklikk.EditorTools
         /// <summary>
         /// Static mathod to show the window.
         /// </summary>
-        [MenuItem("Window/Trissiklikk Editor Tools/Load Scene GUI")]
-        [Shortcut("LoadSceneGUI", KeyCode.F11)]
+        [MenuItem("Window/Trissiklikk Editor Tools/Load Scene GUI Edit %#F11")]
         public static void ShowWindow()
         {
             GetWindow(typeof(LoadSceneGUI));
@@ -79,10 +77,6 @@ namespace Trissiklikk.EditorTools
             {
                 listScene = listScene.OrderByDescending(x => x.path.Contains("/" + s_scenePathList[i] + ".unity")).ToList();
             }
-            #region This is system to check if the path is in the list and group it.
-            //listScene.Sort((x, y) => x.path.CompareTo(y.path));
-            //List<string> lablePathName = new List<string>();
-            #endregion
             for (int i = 0; i < listScene.Count; i++)
             {
                 EditorBuildSettingsScene scene = listScene[i];
@@ -94,14 +88,6 @@ namespace Trissiklikk.EditorTools
                     if (j < splitArray.Length - 2)
                         tempLablePathName += "/";
                 }
-                #region This is system to check if the path is in the list and group it.
-                //if (!CheckPathInList(tempLablePathName, lablePathName))
-                //{
-                //    lablePathName.Add(tempLablePathName);
-                //    GUILayout.Space(10);
-                //    GUILayout.Label(tempLablePathName, EditorStyles.boldLabel);
-                //}
-                #endregion
                 string sceneName = splitArray[splitArray.Length - 1].Replace(".unity", "");
                 GUIStyle styleBtnChangeScene = GetStyleButtonChangeScene(listScene[i].enabled);
                 GUIContent contentChangeScene = new GUIContent($"{sceneName}", $"Change Scene To {sceneName}");
@@ -114,6 +100,7 @@ namespace Trissiklikk.EditorTools
                         s_scenePathList.Add(sceneName);
                     else
                         s_scenePathList.Remove(sceneName);
+                    SaveFavorite();
                 }
                 if (GUILayout.Button(contentChangeScene, styleBtnChangeScene))
                 {
@@ -280,22 +267,6 @@ namespace Trissiklikk.EditorTools
         {
             //menu.AddItem(new GUIContent("Refresh"), false, LoadFavorite);
             menu.AddItem(new GUIContent("Save Favorite"), false, SaveFavorite);
-        }
-
-        /// <summary>
-        /// This function is used to check if the path is in the list.
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        private bool CheckPathInList(string path, List<string> list)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i] == path)
-                    return true;
-            }
-            return false;
         }
     }
 }
