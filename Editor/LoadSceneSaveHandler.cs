@@ -11,6 +11,7 @@ namespace Trissiklikk.EditorTools
     {
         private const string SAVE_FAVORITE_PATH = "Load_Scene_GUI";
         private const string FILE_NAME = "FavoriteData.dat";
+        private const string KEY_NAME = "FavoriteData";
 
         /// <summary>
         /// Method for save favorite scene.
@@ -56,7 +57,7 @@ namespace Trissiklikk.EditorTools
         public void SaveFavoriteWithPlayerPrefs(JToken jToken)
         {
             string json = jToken.ToString();
-            PlayerPrefs.SetString(FILE_NAME, json);
+            PlayerPrefs.SetString(KEY_NAME, json);
             PlayerPrefs.Save();
         }
 
@@ -65,7 +66,7 @@ namespace Trissiklikk.EditorTools
         /// </summary>
         public JToken LoadFavoriteWithPlayerPrefs()
         {
-            string json = PlayerPrefs.GetString(FILE_NAME);
+            string json = PlayerPrefs.GetString(KEY_NAME);
             JToken jsonToken = JsonConvert.DeserializeObject(json) as JToken;
 
             return jsonToken;
