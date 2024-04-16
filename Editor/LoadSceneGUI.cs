@@ -101,7 +101,7 @@ namespace Trissiklikk.EditorTools
                 GUIStyle styleBtnChangeScene = m_loadSceneStyle.GetStyleButtonChangeScene(listScene[i].enabled);
                 GUIContent contentChangeScene = new GUIContent($"{sceneName}", $"Change Scene To {sceneName}");
                 EditorGUILayout.BeginHorizontal();
-                GUIStyle styleBtnFavorite = m_loadSceneStyle.GetStyleFavoriteButton(sceneName, CheckIsFavorite(sceneName));
+                GUIStyle styleBtnFavorite = m_loadSceneStyle.GetStyleFavoriteButton(CheckIsFavorite(sceneName));
                 GUIContent contentFavorite = new GUIContent("♥", "Favorite this scene");
 
                 if (GUILayout.Button(contentFavorite, styleBtnFavorite))

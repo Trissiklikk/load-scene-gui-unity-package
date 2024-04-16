@@ -9,7 +9,7 @@ namespace Trissiklikk.EditorTools
         /// This is stlye for button favorite.
         /// </summary>
         /// <returns></returns>
-        public GUIStyle GetStyleFavoriteButton(string sceneName, bool isFavorite)
+        public GUIStyle GetStyleFavoriteButton(bool isFavorite)
         {
             GUIStyle styleBtnFavorite = new GUIStyle(GUI.skin.button);
             styleBtnFavorite.fontSize = 12;
