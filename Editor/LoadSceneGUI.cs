@@ -158,9 +158,12 @@ namespace Trissiklikk.EditorTools
         /// </summary>
         public void AddItemsToMenu(GenericMenu menu)
         {
-            //menu.AddItem(new GUIContent("Refresh"), false, LoadFavorite);
-            //menu.AddItem(new GUIContent("Save Favorite"), false, SaveFavoriteWithPersistentData);
             menu.AddItem(new GUIContent("Save Favorite"), false, SaveFavorite);
+            menu.AddItem(new GUIContent("Clear Favorite"), false, () =>
+            {
+                ClearFavorite();
+                LoadAndInitFavorite();
+            });
         }
 
         /// <summary>
@@ -170,6 +173,14 @@ namespace Trissiklikk.EditorTools
         {
             JToken json = FavoriteToJson();
             m_loadSceneSaveHandler.SaveFavoriteWithPlayerPrefs(json);
+        }
+
+        /// <summary>
+        /// This function is used to clear all favorite scene.
+        /// </summary>
+        private void ClearFavorite()
+        {
+            m_loadSceneSaveHandler.ClearAllFavorite();
         }
 
         /// <summary>

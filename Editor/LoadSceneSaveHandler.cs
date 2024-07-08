@@ -71,6 +71,15 @@ namespace Trissiklikk.EditorTools
 
             return jsonToken;
         }
+
+        /// <summary>
+        /// Method for clear all favorite scene.
+        /// </summary>
+        public void ClearAllFavorite()
+        {
+            PlayerPrefs.DeleteKey(KEY_NAME);
+            PlayerPrefs.Save();
+        }
     }
 }
 #endif
