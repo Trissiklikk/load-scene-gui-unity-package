@@ -1,7 +1,7 @@
 {
-  "name": "com.trissiklikk.load-scene-gui-unity-package",
-  "version": "1.2.1",
-  "displayName": "Load Scene GUI",
+  "name": "com.trissiklikk.load-scene-editor-unity-package",
+  "version": "1.2.2",
+  "displayName": "Load Scene Editor",
   "description": "This package is my custom editor in Unity engine that help you changing scene easier.",
   "unity": "2022.3",
   "keywords": [
