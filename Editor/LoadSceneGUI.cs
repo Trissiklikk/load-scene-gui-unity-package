@@ -172,7 +172,7 @@ namespace Trissiklikk.EditorTools
         private void SaveFavorite()
         {
             JToken json = FavoriteToJson();
-            m_loadSceneSaveHandler.SaveFavoriteWithPlayerPrefs(json);
+            m_loadSceneSaveHandler.SaveFavoriteWithEditorPrefs(json);
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Trissiklikk.EditorTools
         /// </summary>
         private void LoadAndInitFavorite()
         {
-            JToken json = m_loadSceneSaveHandler.LoadFavoriteWithPlayerPrefs();
+            JToken json = m_loadSceneSaveHandler.LoadFavoriteWithEditorPrefs();
 
             s_scenePathList = new List<string>();
             if (json is JArray)

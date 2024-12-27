@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Trissiklikk.EditorTools
@@ -16,7 +17,7 @@ namespace Trissiklikk.EditorTools
         /// <summary>
         /// Method for save favorite scene.
         /// </summary>
-        [Obsolete("This method is not used anymore. Now we used function SaveFavoriteWithPlayerPrefs()")]
+        [Obsolete("This method is not used anymore. Now we used function SaveFavoriteWithEditorPrefs()")]
         public void SaveFavoriteWithPersistentData(JToken jToken)
         {
             string path = Path.Combine(Application.persistentDataPath, SAVE_FAVORITE_PATH);
@@ -30,7 +31,7 @@ namespace Trissiklikk.EditorTools
         /// <summary>
         /// Method for load favorite scene.
         /// </summary>
-        [Obsolete("This method is not used anymore. Now we used function LoadFavoriteWithPlayerPrefs()")]
+        [Obsolete("This method is not used anymore. Now we used function LoadFavoriteWithEditorPrefs()")]
         public JToken LoadFavoriteWithPersistentData()
         {
             string path = Path.Combine(Application.persistentDataPath, SAVE_FAVORITE_PATH);
@@ -52,21 +53,20 @@ namespace Trissiklikk.EditorTools
         }
 
         /// <summary>
-        /// Method for save favorite scene with PlayerPrefs.
+        /// Method for save favorite scene with EditorPrefs.
         /// </summary>
-        public void SaveFavoriteWithPlayerPrefs(JToken jToken)
+        public void SaveFavoriteWithEditorPrefs(JToken jToken)
         {
             string json = jToken.ToString();
-            PlayerPrefs.SetString(KEY_NAME, json);
-            PlayerPrefs.Save();
+            EditorPrefs.SetString(KEY_NAME, json);
         }
 
         /// <summary>
-        /// Method for load favorite scene with PlayerPrefs.
+        /// Method for load favorite scene with EditorPrefs.
         /// </summary>
-        public JToken LoadFavoriteWithPlayerPrefs()
+        public JToken LoadFavoriteWithEditorPrefs()
         {
-            string json = PlayerPrefs.GetString(KEY_NAME);
+            string json = EditorPrefs.GetString(KEY_NAME);
             JToken jsonToken = JsonConvert.DeserializeObject(json) as JToken;
 
             return jsonToken;
@@ -77,8 +77,7 @@ namespace Trissiklikk.EditorTools
         /// </summary>
         public void ClearAllFavorite()
         {
-            PlayerPrefs.DeleteKey(KEY_NAME);
-            PlayerPrefs.Save();
+            EditorPrefs.DeleteKey(KEY_NAME);
         }
     }
 }
